@@ -16,16 +16,20 @@ group :production do
 end
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'sqlite3'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
 
-gem 'awesome_print' #use `ap <model>` in console to get pretty display
-
 #authentication
 gem 'devise', :git => 'https://github.com/plataformatec/devise.git'
 
 #front end
 gem 'bootstrap-sass', '~> 3.3.3'
+gem 'font-awesome-rails'
+
+#back end
+gem 'awesome_print'
