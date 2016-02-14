@@ -33,7 +33,6 @@ end
 gem 'devise'
 
 #front end
-gem 'bootstrap-sass', '~> 3.3.3'
 gem 'font-awesome-rails'
 
 #back end
