@@ -7,7 +7,7 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1" 
   body
     = render 'layouts/header'
-    .container
+    .container.m-t-3
       = render 'layouts/flash'
       = yield
     = javascript_include_tag 'application', async: Rails.env.production?
