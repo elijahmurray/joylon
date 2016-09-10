@@ -4,9 +4,6 @@
   p
     b Type of Relationship: 
     =@relationship.relationship_type
-  p
-    b Reminder Frequency: 
-    =@relationship.reminder_frequency
 
   = link_to "Edit", edit_relationship_path(@relationship), class: 'btn btn-secondary'
   = link_to "Delete", @relationship, method: :delete, class: 'btn btn-danger'
@@ -25,10 +22,10 @@
 .col-md-4
   h2 Add a reminder
   = simple_form_for [@relationship, @relationship.reminders.build], wrapper: :inline_form do |f|
+    = f.input :frequency, prompt: 'Frequency', collection: Reminder::FREQUENCIES
     = f.label :date, "Date"
     = f.input :date, class: 'datepicker', as: :date
     = f.label :date, "Time"
     = f.input :date, class: 'datepicker', as: :time
-    = f.label :note
     = f.input :note, placeholder: 'Add any notes about this reminder.'
     = f.submit class: 'btn btn-primary'
