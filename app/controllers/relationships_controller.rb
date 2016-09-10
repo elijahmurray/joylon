@@ -43,6 +43,6 @@ class RelationshipsController < ApplicationController
 
   private
   def relationship_params
-    params.require(:relationship).permit(:name, :relationship_type, :reminder_frequency)
+    params.require(:relationship).permit(:name, :relationship_type)
   end
 end

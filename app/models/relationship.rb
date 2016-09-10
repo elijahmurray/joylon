@@ -5,5 +5,4 @@ class Relationship < ActiveRecord::Base
 
   validates :name, presence: true
   validates :relationship_type, presence: true
-  validates :reminder_frequency, presence: true
 end
