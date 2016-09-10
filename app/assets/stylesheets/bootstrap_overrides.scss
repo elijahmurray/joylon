@@ -1,0 +1,5 @@
+// Any styling that modifies bootstrap styling should go here
+
+select.form-control:not([size]):not([multiple]) {
+  height: 2.5em;
+}
