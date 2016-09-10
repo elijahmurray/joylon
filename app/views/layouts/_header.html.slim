@@ -1,6 +1,6 @@
 nav.navbar.navbar-dark.bg-primary
   .container
-    = link_to "Home", root_url, class: "navbar-brand"
+    = link_to "Project Joylon", root_url, class: "navbar-brand"
     ul.nav.navbar-nav.pull-xs-right
       - if user_signed_in?
         li.nav-item = link_to "Your Relationships", relationships_path, class: "nav-link"
