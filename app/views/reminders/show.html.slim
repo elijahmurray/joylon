@@ -1,1 +1,7 @@
+p = "Reminder for #{@reminder.relationship.name}"
+hr
+p= "When: #{@reminder.date}"
+p= "How Frequently: #{@reminder.frequency}"
+p= "Status: #{@reminder.status}"
 
+= link_to 'Back', relationship_path(@reminder.relationship), class: 'btn btn-secondary'

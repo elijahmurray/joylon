@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910213305) do
+ActiveRecord::Schema.define(version: 20160910224750) do
 
   create_table "relationships", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160910213305) do
     t.datetime "updated_at",      null: false
     t.text     "note"
     t.string   "frequency"
+    t.string   "status"
   end
 
   add_index "reminders", ["relationship_id"], name: "index_reminders_on_relationship_id"

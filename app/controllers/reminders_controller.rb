@@ -1,4 +1,9 @@
 class RemindersController < ApplicationController
+  def show
+    #@relationship = Relationship.find(params[:relationship_id])
+    @reminder = Reminder.find(params[:id])
+  end
+
   def create
     @relationship = Relationship.find(params[:relationship_id])
     @reminder = @relationship.reminders.create(reminder_params)

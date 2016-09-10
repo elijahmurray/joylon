@@ -15,7 +15,8 @@
   - @relationship.reminders.each do |reminder|
     li 
       = reminder.prettify
-      = link_to ' Delete Reminder', [reminder.relationship, reminder], method: :delete, class: 'pull-right'
+      = link_to ' Delete', [reminder.relationship, reminder], method: :delete, class: 'btn btn-link btn-sm text-danger'
+      = link_to ' View', [reminder.relationship, reminder], class: 'btn btn-link btn-sm'
 
   hr
 
