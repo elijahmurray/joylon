@@ -5,8 +5,16 @@ class RemindersController < ApplicationController
     redirect_to relationship_path(@relationship)
   end
 
+  def destroy
+    @relationship = Relationship.find(params[:relationship_id])
+    @reminder = @relationship.reminders.find(params[:id])
+    @reminder.destroy
+
+    redirect_to relationship_path(@relationship)
+  end
+
   private
   def reminder_params
-    params.require(:reminder).permit(:date)
+    params.require(:reminder).permit(:date, :note)
   end
 end

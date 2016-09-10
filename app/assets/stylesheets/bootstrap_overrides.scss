@@ -3,3 +3,7 @@
 select.form-control:not([size]):not([multiple]) {
   height: 2.5em;
 }
+
+.btn + .btn {
+  margin-left: 10px;
+}
