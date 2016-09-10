@@ -16,6 +16,18 @@ class RelationshipsController < ApplicationController
     end
   end
 
+  def edit
+    @relationship = Relationship.find(params[:id])
+  end
+
+  def destroy
+    @relationship = Relationship.find(params[:id])
+    @relationship.destroy
+
+    redirect_to relationships_path
+  end
+
+
   def create
     @relationship = Relationship.new(relationship_params)
     if @relationship.save

@@ -1,0 +1,8 @@
+h1 Show for Relationship
+
+p=@relationship.name
+p=@relationship.relationship_type
+p=@relationship.reminder_frequency
+
+= link_to "Edit", edit_relationship_path(@relationship), class: 'btn btn-secondary'
+= link_to "Delete", @relationship, method: :delete, class: 'btn btn-danger'

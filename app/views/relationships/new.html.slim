@@ -1,0 +1,7 @@
+h1 Create New Relationship
+
+= simple_form_for @relationship, url: relationships_path do |f|
+  = f.input :name
+  = f.input :relationship_type
+  = f.input :reminder_frequency
+  = f.button :submit, class: 'btn btn-primary'
