@@ -12,7 +12,13 @@
 
   hr
 
-  h3 Reminders
+  h3 Needed Notifications
+  ul
+  - @relationship.reminder_notifications.each do |reminder|
+    li
+      = prettify(reminder)
+
+  h3 All Reminders
   ul
   - @relationship.sorted_reminders.each do |reminder|
     li 
