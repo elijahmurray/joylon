@@ -1,0 +1,6 @@
+= simple_form_for @relationship, class: 'form-control' do |f|
+  - @relationship.errors.full_messages.each do |msg|
+    = render partial: 'layouts/flash', locals: {alert: "Could not save because #{msg}."}
+  = f.input :name, placeholder: "e.g. Thomas Jefferson"
+  = f.input :relationship_type, class: 'form-control', collection: Relationship::RELATIONSHIP_TYPES, prompt: "Who is this person to you?"
+  = f.button :submit, class: 'btn btn-primary'

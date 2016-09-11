@@ -1,12 +1,20 @@
-h1 This is the index for Relationships
-
-= link_to 'Create New Relationship', new_relationship_path, class: 'btn btn-secondary'
+h1 Dashboard
+= link_to 'Create New Relationship', new_relationship_path, class: 'btn btn-primary pull-right'
 
 br
-.col-md-6
-  - @relationships.each do |relationship|
-    .row
-      .col-md-3= link_to relationship.name, relationship_path(relationship)
-      .actions.col-md-9= link_to "Mark Complete", "#"
+hr
 
-.col-md-6
+h3 Relationships
+table.table.col-md-9
+  tr
+    th Name
+    th Relationship
+    th Actions
+  - @relationships.each do |relationship|
+    tr
+      td= link_to relationship.name, relationship_path(relationship)
+      td= relationship.relationship_type
+      td
+        /= link_to "Mark Complete", "#", class: 'btn btn-sm btn-secondary'
+        = link_to "View", relationship_path(relationship), class: 'btn btn-sm btn-secondary'
+        = link_to "Delete", relationship_path(relationship), method: :delete, class: 'btn btn-sm btn-danger'

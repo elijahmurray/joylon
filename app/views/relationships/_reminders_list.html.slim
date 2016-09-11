@@ -1,0 +1,14 @@
+h3=status.titleize + " Reminders"
+ul
+- relationship.reminders_by_status(status).each do |reminder|
+  li
+    = prettify(reminder)
+    .actions.pull-right
+      - unless reminder.completed?
+        = simple_form_for [reminder.relationship, reminder], method: :patch, wrapper: :inline_form, html: {class: 'pull-right'} do |f| 
+          = f.input :status, input_html: { value: 'completed'}, as: :hidden, wrapper_class: ''
+          = f.submit 'Complete', class: 'btn btn-link text-success btn-sm'
+      = link_to 'View', [reminder.relationship, reminder], class: 'btn btn-link btn-sm'
+      = link_to 'Delete', [reminder.relationship, reminder], method: :delete, class: 'btn btn-link btn-sm text-danger'
+    .clearfix
+

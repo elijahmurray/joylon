@@ -1,7 +1,3 @@
 h1 Create New Relationship
 
-= simple_form_for @relationship, url: relationships_path, class: 'form-control' do |f|
-  = f.input :name, placeholder: "e.g. Thomas Jefferson"
-  = f.input :relationship_type, class: 'form-control', collection: Relationship::RELATIONSHIP_TYPES, prompt: "Who is this person to you?"
-  = f.input :reminder_frequency, collection: Relationship::REMINDER_FREQUENCIES, prompt: "How often do you want to be reminded?", class: 'form-control'
-  = f.button :submit, class: 'btn btn-primary'
+= render 'form'

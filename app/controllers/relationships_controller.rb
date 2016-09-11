@@ -1,14 +1,17 @@
 class RelationshipsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
-    @relationship = Relationship.find(params[:id])
+    @relationship = current_user.relationships.find(params[:id])
+    @reminder ||= @relationship.reminders.build
   end
 
   def index
-    @relationships = Relationship.all
+    @relationships = current_user.relationships.all
   end
 
   def update
-    @relationship = Relationship.find(params[:id])
+    @relationship = current_user.relationships.find(params[:id])
     if @relationship.update(relationship_params)
       redirect_to @relationship
     else
@@ -17,11 +20,11 @@ class RelationshipsController < ApplicationController
   end
 
   def edit
-    @relationship = Relationship.find(params[:id])
+    @relationship = current_user.relationships.find(params[:id])
   end
 
   def destroy
-    @relationship = Relationship.find(params[:id])
+    @relationship = current_user.relationships.find(params[:id])
     @relationship.destroy
 
     redirect_to relationships_path
@@ -29,7 +32,8 @@ class RelationshipsController < ApplicationController
 
 
   def create
-    @relationship = Relationship.new(relationship_params)
+    @relationship = current_user.relationships.create(relationship_params)
+
     if @relationship.save
       redirect_to relationships_path
     else
@@ -43,6 +47,6 @@ class RelationshipsController < ApplicationController
 
   private
   def relationship_params
-    params.require(:relationship).permit(:name, :relationship_type, :reminder_frequency)
+    params.require(:relationship).permit(:name, :relationship_type)
   end
 end

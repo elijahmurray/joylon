@@ -1,8 +1,23 @@
-h1 Show for Relationship
+.col-md-8
+  .pull-right
+    = link_to "Edit", edit_relationship_path(@relationship), class: 'btn btn-secondary btn-sm'
+    = link_to "Delete", @relationship, method: :delete, class: 'btn btn-danger btn-sm'
+  h2 #{@relationship.name}
+  - @relationship.errors.full_messages.each do |msg|
+    = render partial: 'layouts/flash', locals: {alert: "Could not save because #{msg}."}
 
-p=@relationship.name
-p=@relationship.relationship_type
-p=@relationship.reminder_frequency
+  .description
+    b Type of Relationship: 
+    =@relationship.relationship_type
 
-= link_to "Edit", edit_relationship_path(@relationship), class: 'btn btn-secondary'
-= link_to "Delete", @relationship, method: :delete, class: 'btn btn-danger'
+
+  hr
+
+  = render partial: 'relationships/reminders_list', locals: {relationship: @relationship, status: 'late'}
+  = render partial: 'relationships/reminders_list', locals: {relationship: @relationship, status: 'active'}
+  = render partial: 'relationships/reminders_list', locals: {relationship: @relationship, status: 'completed'}
+  /= link_to "Manual Refresh Statuses", , class: 'btn btn-sm btn-secondary pull-right'
+
+.col-md-4
+  h2 Add a reminder
+  = render 'reminders/form'
