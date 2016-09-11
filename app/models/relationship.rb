@@ -28,6 +28,15 @@ class Relationship < ActiveRecord::Base
     reminders.each {|r| r.update_status}
   end
 
+  def send_email
+    Mail.deliver do
+      to 'elijahmurray@gmail.com'
+      from 'elijahmurray@gmail.com'
+      subject 'testing send mail'
+      body 'Sending email with Ruby through SendGrid!'
+    end
+  end
+
   private
   def nightly_update
     # update_reminder_statuses

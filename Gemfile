@@ -26,6 +26,7 @@ group :development, :test do
   gem 'minitest'
   gem 'rspec-rails'
   gem 'pry'
+  gem 'dotenv-rails'
 end
 
 #authentication
@@ -37,3 +38,4 @@ gem 'font-awesome-rails'
 #back end
 gem 'simple_form'
 gem 'slim-rails'
+gem 'mail'
