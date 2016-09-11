@@ -38,6 +38,7 @@ class Reminder < ActiveRecord::Base
   end
 
   def frequency_in_days
+    return 0 if self.frequency.blank?
     day_mapping = { 
       "Daily" => 1,
       "Weekly" => 7,
