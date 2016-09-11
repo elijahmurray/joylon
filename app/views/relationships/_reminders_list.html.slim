@@ -1,0 +1,8 @@
+h3=status.titleize + " Reminders"
+ul
+- relationship.reminders_by_status(status).each do |reminder|
+  li 
+    = prettify(reminder)
+    = link_to ' Delete', [reminder.relationship, reminder], method: :delete, class: 'btn btn-link btn-sm text-danger'
+    = link_to ' View', [reminder.relationship, reminder], class: 'btn btn-link btn-sm'
+
