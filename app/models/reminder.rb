@@ -4,19 +4,14 @@ class Reminder < ActiveRecord::Base
   FREQUENCIES = ["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]
   STATUSES = ['active', 'late', 'completed']
 
-  before_create :set_due_date
-  after_update :check_recurring
+  before_validation :set_defaults
+  after_update :follow_up_reminder
 
   validates :frequency, presence: true
   validates :due_date, presence: true
 
   def set_defaults
-    self.status ||= :active
-  end
-
-  def set_due_date(create_from = Date.today())
-    self.due_date = create_from + frequency_in_days.days
-    #self.due_date = create_from
+    self.due_date ||= Date.today() + frequency_in_days.days
   end
 
   def update_status
@@ -31,13 +26,15 @@ class Reminder < ActiveRecord::Base
     self.status == 'completed'
   end
 
-
   private
-  def check_recurring
-    new_reminder = self.relationship.reminders.create(
+  def follow_up_reminder
+    return unless self.completed?
+    self.relationship.reminders.create(
       status: 'active', 
       frequency: self.frequency, 
-      note: self.note)
+      note: self.note,
+      due_date: self.due_date = self.due_date + frequency_in_days.days
+    )
   end
 
   def frequency_in_days
