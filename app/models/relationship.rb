@@ -1,6 +1,7 @@
 class Relationship < ActiveRecord::Base
   RELATIONSHIP_TYPES = ["Family", "Professional Network", "Mentor", "Mentee"]
 
+  belongs_to :user
   has_many :reminders
 
   validates :name, presence: true
