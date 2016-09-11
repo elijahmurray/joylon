@@ -11,6 +11,8 @@ class RemindersController < ApplicationController
   def update
     @reminder = Reminder.find(params[:id])
     @reminder.update_attributes(reminder_params)
+
+    redirect_to relationship_path(@reminder.relationship)
   end
 
   def create

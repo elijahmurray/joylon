@@ -5,6 +5,7 @@ class Reminder < ActiveRecord::Base
   STATUSES = ['active', 'late', 'completed']
 
   #after_initialize :set_defaults
+  after_update :check_recurring
 
   validates :frequency, presence: true
 
@@ -24,8 +25,20 @@ class Reminder < ActiveRecord::Base
     end
   end
 
+  def completed?
+    self.status == 'completed'
+  end
+
 
   private
+  def check_recurring
+    new_reminder = self.relationship.reminders.create(
+      status: 'active', 
+      frequency: self.frequency, 
+      note: self.note)
+    raise
+  end
+
   def frequency_in_days
     day_mapping = { 
       "Daily" => 1,
