@@ -4,17 +4,19 @@ class Reminder < ActiveRecord::Base
   FREQUENCIES = ["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]
   STATUSES = ['active', 'late', 'completed']
 
-  #after_initialize :set_defaults
+  before_create :set_due_date
   after_update :check_recurring
 
   validates :frequency, presence: true
+  validates :due_date, presence: true
 
   def set_defaults
     self.status ||= :active
   end
 
-  def due_date
-    self.created_at + frequency_in_days.days
+  def set_due_date(create_from = Date.today())
+    self.due_date = create_from + frequency_in_days.days
+    #self.due_date = create_from
   end
 
   def update_status
@@ -36,7 +38,6 @@ class Reminder < ActiveRecord::Base
       status: 'active', 
       frequency: self.frequency, 
       note: self.note)
-    raise
   end
 
   def frequency_in_days

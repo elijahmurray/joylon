@@ -3,6 +3,7 @@ class RelationshipsController < ApplicationController
 
   def show
     @relationship = current_user.relationships.find(params[:id])
+    @reminder ||= @relationship.reminders.build
   end
 
   def index

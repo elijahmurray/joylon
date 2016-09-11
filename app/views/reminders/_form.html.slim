@@ -1,4 +1,6 @@
-= simple_form_for [@relationship, @relationship.reminders.build], wrapper: :inline_form do |f|
+- @reminder.errors.full_messages.each do |msg|
+  = render partial: 'layouts/flash', locals: { alert: msg }
+= simple_form_for [@relationship, @reminder], wrapper: :inline_form do |f|
   = f.input :frequency, prompt: 'Frequency', collection: Reminder::FREQUENCIES
   = f.input :status, collection: Reminder::STATUSES, prompt: 'Status'
   = f.input :note, placeholder: 'Add any notes about this reminder.'

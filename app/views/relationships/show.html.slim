@@ -13,9 +13,9 @@
 
   hr
 
-  = render partial: 'reminders_list', locals: {relationship: @relationship, status: 'late'}
-  = render partial: 'reminders_list', locals: {relationship: @relationship, status: 'active'}
-  = render partial: 'reminders_list', locals: {relationship: @relationship, status: 'completed'}
+  = render partial: 'relationships/reminders_list', locals: {relationship: @relationship, status: 'late'}
+  = render partial: 'relationships/reminders_list', locals: {relationship: @relationship, status: 'active'}
+  = render partial: 'relationships/reminders_list', locals: {relationship: @relationship, status: 'completed'}
   /= link_to "Manual Refresh Statuses", , class: 'btn btn-sm btn-secondary pull-right'
 
 .col-md-4
