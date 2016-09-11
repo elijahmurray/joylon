@@ -12,6 +12,7 @@ class Reminder < ActiveRecord::Base
 
   def set_defaults
     self.due_date ||= Date.today() + frequency_in_days.days
+    self.status ||= 'active'
   end
 
   def update_status
