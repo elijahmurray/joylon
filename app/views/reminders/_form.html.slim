@@ -1,0 +1,9 @@
+= simple_form_for [@relationship, @relationship.reminders.build], wrapper: :inline_form do |f|
+  = f.input :frequency, prompt: 'Frequency', collection: Reminder::FREQUENCIES
+  = f.input :status, collection: Reminder::STATUSES
+  = f.label :date, "Date"
+  = f.input :date, class: 'datepicker', as: :date
+  = f.label :date, "Time"
+  = f.input :date, class: 'datepicker', as: :time
+  = f.input :note, placeholder: 'Add any notes about this reminder.'
+  = f.submit class: 'btn btn-primary'

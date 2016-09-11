@@ -2,20 +2,13 @@ class Reminder < ActiveRecord::Base
   belongs_to :relationship
 
   FREQUENCIES = ["Daily", "Weekly", "Monthly", "Quarterly", "Yearly"]
-  STATUSES = ["Active", "Missed", "Completed"]
+  STATUSES = ['active', 'late', 'completed']
 
-  after_initialize :set_defaults
-
-  attr_accessor :status
+  #after_initialize :set_defaults
 
   validates :frequency, presence: true
 
   def set_defaults
-    self.status ||= "Active"
-  end
-
-  def prettify
-    output = date.strftime("%b %e, %l:%M %p")
-    return output + ", " + note
+    self.status ||= :active
   end
 end

@@ -5,4 +5,8 @@ class Relationship < ActiveRecord::Base
 
   validates :name, presence: true
   validates :relationship_type, presence: true
+
+  def sorted_reminders
+    self.reminders.sort{|r| r.status <=> r.status}
+  end
 end
