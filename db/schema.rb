@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160910224750) do
+ActiveRecord::Schema.define(version: 20160911010015) do
 
   create_table "relationships", force: :cascade do |t|
     t.string   "name"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20160910224750) do
 
   create_table "reminders", force: :cascade do |t|
     t.integer  "relationship_id"
-    t.datetime "date"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.text     "note"

@@ -1,6 +1,6 @@
 module RemindersHelper
   def prettify(reminder)
-    date = reminder.date.strftime("%b %e, %l:%M %p")
+    due_date = reminder.due_date.strftime("%b %e")
 
     label_class = {
       "active" => 'label-success',
@@ -9,6 +9,6 @@ module RemindersHelper
     }
 
     label = content_tag(:div, reminder.status, class: "label #{label_class[reminder.status]}")
-    return label + " #{date}  #{reminder.note}"
+    return label + " #{due_date} #{reminder.frequency} #{reminder.note}"
   end
 end

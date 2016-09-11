@@ -14,7 +14,7 @@
 
   h3 Needed Notifications
   ul
-  - @relationship.reminder_notifications.each do |reminder|
+  - @relationship.late_reminders.each do |reminder|
     li
       = prettify(reminder)
 

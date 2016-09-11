@@ -10,15 +10,14 @@ class Relationship < ActiveRecord::Base
     self.reminders.sort{|r| r.status <=> r.status}
   end
 
-  def reminder_notifications
+  def late_reminders
     self.reminders.select{|r| r.status == 'late'}
   end
 
-  def update_all_reminder_statuses
-    #if reminder.due_date < Date.today() - 1
-    #  send notification
-    #  else
-    #  return
-    #  end
+  private
+  def nightly_update
+    #reminders.each do {|r| r.update_status}
+    # late_reminders.each do {|r| send_notification(r) }
   end
+
 end
