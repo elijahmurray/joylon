@@ -15,5 +15,6 @@ table.table.col-md-9
       td= link_to relationship.name, relationship_path(relationship)
       td= relationship.relationship_type
       td
-        = link_to "Mark Complete", "#", class: 'btn btn-sm btn-secondary'
+        /= link_to "Mark Complete", "#", class: 'btn btn-sm btn-secondary'
+        = link_to "View", relationship_path(relationship), class: 'btn btn-sm btn-secondary'
         = link_to "Delete", relationship_path(relationship), method: :delete, class: 'btn btn-sm btn-danger'
