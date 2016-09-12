@@ -1,3 +1,10 @@
 p Your Daily Reminders!
-- reminders[0].each do |r|
-  p= "#{r.relationship.name} #{r.due_date}"
+br
+b Your Late Reminders!
+- late_reminders.each do |data|
+  - data[1].each do |reminder|
+    p= "#{data[0]} is due on #{reminder.due_date.strftime("%b %e")}"
+b Your Upcoming Reminders
+- upcoming_reminders.each do |data|
+  - data[1].each do |reminder|
+    p= "#{data[0]} is due on #{reminder.due_date.strftime("%b %e")}"
