@@ -7,6 +7,7 @@ class RelationshipsController < ApplicationController
   end
 
   def index
+    current_user.reminders_email
     @relationships = current_user.relationships.all
   end
 

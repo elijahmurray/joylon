@@ -27,6 +27,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry'
   gem 'dotenv-rails'
+  gem 'letter_opener'
 end
 
 #authentication
