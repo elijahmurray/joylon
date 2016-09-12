@@ -16,10 +16,8 @@ class Reminder < ActiveRecord::Base
   end
 
   def update_status
-    unless due_date > Date.today() + 1.days
-      self.update_attribute(:status, 'late')
-    else
-      return
+    if due_date < Date.today() + 2.days && self.status != 'completed'
+      self.update_attribute(:status, 'late') 
     end
   end
 
