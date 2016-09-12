@@ -16,14 +16,6 @@ class Relationship < ActiveRecord::Base
     #results.sort_by!(:created_at)
   end
 
-  def late_reminders
-    self.reminders.select{|r| r.status == 'late'}
-  end
-
-  def completed_reminders
-    self.reminders.select{|r| r.status == 'completed'}
-  end
-
   def update_reminder_statuses
     reminders.each {|r| r.update_status}
   end
