@@ -1,7 +1,11 @@
 Getting Started
 ===============
 - install instructions
-- `rvm use ruby-2.3`
+- `rvm use ruby-2.3.0`
+
+Optional Install livereloader
+
+`guard init livereload`
 
 Running Application
 ===============
@@ -13,6 +17,8 @@ Start Database
 Run Server
     rails s
 
+Optional - run livereloader
+  bundle exec guard
 
 Cron Jobs
 - updater
