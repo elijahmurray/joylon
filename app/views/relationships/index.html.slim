@@ -15,7 +15,7 @@ table.table.col-md-9
     tr
       td= link_to relationship.name, relationship_path(relationship)
       td= relationship.relationship_type
-      td= distance_of_time_in_words(Time.now(), soonest_reminder(relationship))
+      td= next_reminder_due_in(relationship)
       td
         /= link_to "Mark Complete", "#", class: 'btn btn-sm btn-secondary'
         = link_to "View", relationship_path(relationship), class: 'btn btn-sm btn-secondary'

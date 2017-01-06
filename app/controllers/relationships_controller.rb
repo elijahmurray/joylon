@@ -33,6 +33,7 @@ class RelationshipsController < ApplicationController
 
   def create
     @relationship = current_user.relationships.create(relationship_params)
+    @relationship.reminders.create(reminder_params)
 
     if @relationship.save
       redirect_to relationships_path
@@ -43,10 +44,14 @@ class RelationshipsController < ApplicationController
 
   def new
     @relationship = Relationship.new
+    @reminder = @relationship.reminders.new
   end
 
   private
   def relationship_params
     params.require(:relationship).permit(:name, :relationship_type)
+  end
+  def reminder_params
+    params[:relationship].require(:reminder).permit(:date, :note, :frequency, :status, :due_date)
   end
 end
