@@ -7,6 +7,11 @@ class Relationship < ActiveRecord::Base
   validates :name, presence: true
   validates :relationship_type, presence: true
 
+  def reminders_due_in(days)
+    one_week_from_now = Date.today() + days
+    reminders.select{|r| one_week_from_now > r.due_date}
+  end
+
   def reminders_by_status(status = 'all')
     if status == 'all'
       results = self.reminders
@@ -21,9 +26,4 @@ class Relationship < ActiveRecord::Base
   end
 
   private
-  def nightly_update
-    # update_reminder_statuses
-    # late_reminders.each do {|r| send_notification(r) }
-  end
-
 end

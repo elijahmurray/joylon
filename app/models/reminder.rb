@@ -5,7 +5,7 @@ class Reminder < ActiveRecord::Base
   STATUSES = ['active', 'late', 'completed']
 
   before_validation :set_defaults
-  after_update :follow_up_reminder
+  after_update :create_next_reminder
 
   validates :frequency, presence: true
   validates :due_date, presence: true
@@ -26,7 +26,7 @@ class Reminder < ActiveRecord::Base
   end
 
   private
-  def follow_up_reminder
+  def create_next_reminder
     return unless self.completed?
     self.relationship.reminders.create(
       status: 'active', 

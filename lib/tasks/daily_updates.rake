@@ -14,8 +14,8 @@ namespace :daily_tasks do
       late_reminders = {}
       upcoming_reminders = {}
       user.relationships.each do |rel| 
+        upcoming_reminders[rel.name] = rel.reminders_due_in(8)
         late_reminders[rel.name] = rel.reminders_by_status('late')
-        upcoming_reminders[rel.name] =  rel.reminders_by_status('active')
       end
 
       email_address = user.email
@@ -30,3 +30,7 @@ namespace :daily_tasks do
     end
   end
 end
+
+# If user has a relationship 
+# and that relationship has a reminder
+# and that reminder is due within 7 days
