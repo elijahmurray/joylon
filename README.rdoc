@@ -20,5 +20,12 @@ Run Server
 Optional - run livereloader
   bundle exec guard
 
-Cron Jobs
-- updater
+Cron Jobs / Rake Tasks
+======================
+Update the status of all reminders 
+
+  bundle exec rake daily_tasks:update_reminder_statuses
+
+Send emails to all users with their list of reminders
+
+  bundle exec rake daily_tasks:email_reminders
