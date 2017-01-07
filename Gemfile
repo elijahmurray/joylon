@@ -28,6 +28,7 @@ group :development, :test do
   gem 'pry'
   gem 'dotenv-rails'
   gem 'letter_opener'
+  gem 'guard-livereload'
 end
 
 #authentication

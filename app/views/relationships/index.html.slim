@@ -9,12 +9,15 @@ table.table.col-md-9
   tr
     th Name
     th Relationship
+    th Due In
     th Actions
   - @relationships.each do |relationship|
     tr
       td= link_to relationship.name, relationship_path(relationship)
       td= relationship.relationship_type
+      td= next_reminder_due_in(relationship)
       td
         /= link_to "Mark Complete", "#", class: 'btn btn-sm btn-secondary'
         = link_to "View", relationship_path(relationship), class: 'btn btn-sm btn-secondary'
         = link_to "Delete", relationship_path(relationship), method: :delete, class: 'btn btn-sm btn-danger'
+

@@ -11,14 +11,17 @@ namespace :daily_tasks do
     @users = User.all.to_a
 
     @users.each do |user|
-      late_reminders = {}
-      upcoming_reminders = {}
+      late_reminders = []
+      upcoming_reminders = []
       user.relationships.each do |rel| 
-        late_reminders[rel.name] = rel.reminders_by_status('late')
-        upcoming_reminders[rel.name] =  rel.reminders_by_status('active')
+        upcoming_reminders += rel.reminders_due_in(8)
+        late_reminders += rel.reminders_by_status('late')
       end
 
       email_address = user.email
+
+      next if upcoming_reminders.empty? && late_reminders.empty?
+
       Mail.deliver do
         to email_address
         from 'elijahmurray@gmail.com'

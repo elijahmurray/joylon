@@ -1,10 +1,8 @@
 p Your Daily Reminders!
 br
-b Your Late Reminders!
-- late_reminders.each do |data|
-  - data[1].each do |reminder|
-    p= "#{data[0]} is due on #{reminder.due_date.strftime("%b %e")}"
-b Your Upcoming Reminders
-- upcoming_reminders.each do |data|
-  - data[1].each do |reminder|
-    p= "#{data[0]} is due on #{reminder.due_date.strftime("%b %e")}"
+b Here are your reminders for the upcoming week:
+- upcoming_reminders.each do |reminder|
+  p= "#{reminder.relationship.name} is due on #{reminder.due_date.strftime("%b %e")}"
+b Your late on the following reminders:
+- late_reminders.each do |reminder|
+  p= "#{reminder.relationship.name} was due on #{reminder.due_date.strftime("%b %e")}"
